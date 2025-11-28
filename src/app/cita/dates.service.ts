@@ -53,20 +53,24 @@
           
 
           const mensajeQr = `
-            Hola ${createDto.dni || 'Usuario'},
+            Hola ${createDto?.nombre || 'Usuario'},
             Usted tiene una cita el día ${fecha.toLocaleDateString()} a las ${createDto.horaCita} en el Área ${area?.nombre}.
-            Duración: ${duracionFinal}
-            Link de la cita: ${redirect_invite}
+            Motivo: ${createDto.motivo}.
+            Empresa: ${createDto.empresa}.
+            Duración: ${duracionFinal}.
+            id: ${id}
           `;
 
           qrBase64 = await this.qrService.generateQr(mensajeQr);
           console.log(mensajeQr);
         }else{
           const mensajeQr = `
-            Hola ${createDto.dni || 'Usuario'},
+            Hola ${createDto?.nombre || 'Usuario'},
             Usted tiene una cita el día ${fecha.toLocaleDateString()} a las ${createDto.horaCita} en el Área ${area?.nombre}.
-            Duración: ${duracionFinal}
-            Link de la cita: ${redirect_invite}
+            Motivo: ${createDto.motivo}.
+            Empresa: ${createDto.empresa}.
+            Duración: ${duracionFinal}.
+            id: ${id}
           `;
           qrBase64 = await this.qrService.generateQr(mensajeQr);
         }
@@ -120,5 +124,16 @@
         return await this.citaRepository.save(cita);
       }
 
+      async getCitasDeColaborador(userId: string) {
+        // traemos al colaborador con su área
+        const citas = await this.citaRepository.find({where: {user: {id: userId}}});
+
+        if (!citas) {
+          throw new NotFoundException("El colaborador no tiene citas asignadas");
+        }
+
+        // traemos todas las citas cuyo areaId coincida
+        return citas
+      }
 
     }

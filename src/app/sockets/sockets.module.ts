@@ -7,6 +7,5 @@ import { CitasModule } from '../cita/citas.module';
   imports: [forwardRef(() => CitasModule)],
   providers: [SocketsGateway, SocketService,],
   exports: [SocketsGateway, SocketService],
-  imports: [forwardRef(() => CitasModule)]
 })
 export class SocketsModule {}

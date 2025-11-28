@@ -47,3 +47,11 @@ export class CreateCitaDto {
   @IsString()
   horaIngreso: string;
 }
+
+export class AutorizeCitaDto {
+  @IsString()
+  citaId: string;
+  
+  @IsString()
+  userId: string;
+}

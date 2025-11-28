@@ -15,8 +15,7 @@ import { Server, Socket } from 'socket.io';
   },
 })
 export class SocketsGateway
-  implements OnGatewayConnection, OnGatewayDisconnect
-{
+  implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;
 
@@ -37,5 +36,9 @@ export class SocketsGateway
     // reenviar a todos
     this.server.emit('mensaje', data);
     return { status: 'ok' };
+  }
+
+  sendToUser(userId: string, event: string, payload: any) {
+    this.server.to(`user_${userId}`).emit(event, payload);
   }
 }

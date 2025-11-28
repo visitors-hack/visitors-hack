@@ -13,6 +13,7 @@ import { AreaModule } from './app/area/area.module';
 import { CitasModule } from './app/cita/citas.module';
 import { QrController } from './app/qr/qr.controller';
 import { EmailModule } from './app/email/email.module';
+import { GuardiaModule } from './app/guardia/guardia.module';
 
 dotenv.config();
 
@@ -25,7 +26,7 @@ dotenv.config();
     CitasModule,
     EmailModule,
     AreaModule,
-    AreaModule
+    GuardiaModule
   ],
   controllers: [QrController],
   providers: [QrService],

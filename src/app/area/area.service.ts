@@ -17,7 +17,7 @@ export class AreaService {
   }
 
   findAll() {
-    return this.areaRepo.find({ relations: ['salas'] });
+    return this.areaRepo.find({ relations: ['salas', 'users'] });
   }
 
   async findOne(id: string){

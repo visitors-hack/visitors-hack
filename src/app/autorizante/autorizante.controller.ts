@@ -16,4 +16,10 @@ export class AutorizanteController {
     return this.service.updateEstado(citaId, estadoId);
   }
 
+  @Get("citas-colaborador/:id")
+  getCitasDeColaborador(@Param("id") id: string) {
+    return this.service.getCitasDeColaborador(id);
+  }
+
+
 }

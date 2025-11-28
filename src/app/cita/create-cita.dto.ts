@@ -27,4 +27,7 @@ export class CreateCitaDto {
 
   @IsString()
   areaId: string;
+
+  @IsString()
+  estadoId: string;
 }

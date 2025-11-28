@@ -11,5 +11,6 @@ import { AreaModule } from '../area/area.module';
   imports: [TypeOrmModule.forFeature([Cita]), AreaModule],
   controllers: [CitasController],
   providers: [CitasService, QrService],
+   exports: [CitasService],
 })
 export class CitasModule {}

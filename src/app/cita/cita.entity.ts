@@ -3,6 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Sala } from '../sala/sala.entity';
 import { Area } from '../area/area.entity';
 import { User } from '../users/user.entity';
+import { Estado } from '../estado/estado.entity';
 
 @Entity()
 export class Cita {
@@ -44,4 +45,7 @@ export class Cita {
 
   @ManyToOne(() => Area, (area) => area.salas)
   area: Area;
+
+  @ManyToOne(() => Estado)
+  estado: Estado;
 }

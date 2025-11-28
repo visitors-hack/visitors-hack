@@ -11,7 +11,7 @@ export class Cita {
   id: string;
 
   @Column()
-  nombre?: string;
+  nombre: string;
 
   @Column()
   fecha: Date;

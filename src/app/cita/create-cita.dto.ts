@@ -30,4 +30,13 @@ export class CreateCitaDto {
 
   @IsString()
   estadoId: string;
+
+  @IsString()
+  userId: string;
+
+  @IsString()
+  motivo: string;
+
+  @IsString()
+  empresa: string;
 }

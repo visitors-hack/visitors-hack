@@ -2,6 +2,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Sala } from '../sala/sala.entity';
 import { Area } from '../area/area.entity';
+import { User } from '../users/user.entity';
 import { Estado } from '../estado/estado.entity';
 
 @Entity()
@@ -10,10 +11,16 @@ export class Cita {
   id: string;
 
   @Column()
+  nombre: string;
+
+  @Column()
   fecha: Date;
 
   @Column()
   horaCita: string;
+
+  @Column()
+  horaIngreso: string;
 
   @Column()
   horaFin: string;
@@ -22,7 +29,7 @@ export class Cita {
   duracion: number;
 
   @Column({ nullable: true })
-  dni?: string;
+  dni: string;
 
   @Column({ nullable: true })
   email?: string;
@@ -30,10 +37,13 @@ export class Cita {
   @Column()
   redirect_invite: string;
 
-  @ManyToOne(() => Sala, sala => sala.citas)
+  @ManyToOne(() => User, (user) => user.citas, { nullable: false })
+  user: User;
+
+  @ManyToOne(() => Sala, (sala) => sala.citas)
   sala: Sala;
 
-  @ManyToOne(() => Area, area => area.salas)
+  @ManyToOne(() => Area, (area) => area.salas)
   area: Area;
 
   @ManyToOne(() => Estado)

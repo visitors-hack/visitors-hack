@@ -8,6 +8,8 @@ import {
   OnGatewayDisconnect,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
+import { CitasService } from '../cita/dates.service';
+
 
 @WebSocketGateway({
   cors: {
@@ -16,6 +18,7 @@ import { Server, Socket } from 'socket.io';
 })
 export class SocketsGateway
   implements OnGatewayConnection, OnGatewayDisconnect {
+  constructor(private readonly citasService: CitasService) {}
   @WebSocketServer()
   server: Server;
 
@@ -33,8 +36,10 @@ export class SocketsGateway
   @SubscribeMessage('mensaje')
   handleMessage(@MessageBody() data: any, @ConnectedSocket() client: Socket) {
     console.log('Mensaje recibido', data);
+    this.citasService.updateEstado(data.cita, data.estado)
     // reenviar a todos
     this.server.emit('mensaje', data);
+    this.server.emit(data.cita, "cita actualizada");
     return { status: 'ok' };
   }
 

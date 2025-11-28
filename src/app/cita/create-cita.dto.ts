@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsEmail, IsDateString } from 'class-validator';
+import { IsString, IsOptional, IsEmail, IsDateString, IsUUID } from 'class-validator';
 
 export class CreateCitaDto {
   @IsString()
@@ -49,9 +49,9 @@ export class CreateCitaDto {
 }
 
 export class AutorizeCitaDto {
-  @IsString()
+  @IsUUID()
   citaId: string;
   
-  @IsString()
+  @IsUUID()
   userId: string;
 }

@@ -5,10 +5,10 @@ import { CitasController } from './dates.controller';
 import { CitasService } from './dates.service';
 import { QrService } from 'src/app/qr/qr.service';
 import { AreaModule } from '../area/area.module';
-
+import { Estado } from '../estado/estado.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Cita]), AreaModule],
+  imports: [TypeOrmModule.forFeature([Cita, Estado]), AreaModule],
   controllers: [CitasController],
   providers: [CitasService, QrService],
    exports: [CitasService],

@@ -89,4 +89,21 @@ import { AreaService } from '../area/area.service';
       return horas;
     }
 
+    async updateEstado(citaId: string, estadoId: string) {
+      const cita = await this.citaRepository.findOne({
+        where: { id: citaId },
+        relations: ['estado'],
+      });
+
+      if (!cita) {
+        throw new NotFoundException('Cita no encontrada');
+      }
+
+      // Actualizamos solo el id del estado
+      cita.estado = { id: estadoId } as any;
+
+      return await this.citaRepository.save(cita);
+    }
+
+
   }

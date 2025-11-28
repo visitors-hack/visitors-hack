@@ -14,6 +14,7 @@ import { CitasModule } from './app/cita/citas.module';
 import { QrController } from './app/qr/qr.controller';
 import { EmailModule } from './app/email/email.module';
 import { GuardiaModule } from './app/guardia/guardia.module';
+import { AutorizanteModule } from './app/autorizante/autorizante.module';
 
 dotenv.config();
 
@@ -26,7 +27,8 @@ dotenv.config();
     CitasModule,
     EmailModule,
     AreaModule,
-    GuardiaModule
+    GuardiaModule,
+    AutorizanteModule
   ],
   controllers: [QrController],
   providers: [QrService],

@@ -40,3 +40,11 @@ export class CreateCitaDto {
   @IsString()
   empresa: string;
 }
+
+export class AutorizeCitaDto {
+  @IsString()
+  citaId: string;
+  
+  @IsString()
+  userId: string;
+}

@@ -1,17 +1,26 @@
 // src/app/dates/dates.controller.ts
 import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { CitasService } from '../cita/dates.service';
-import { CreateCitaDto } from '../cita/create-cita.dto';
+import { AutorizeCitaDto, CreateCitaDto } from '../cita/create-cita.dto';
+import { GuardiaService } from './guardia.service';
 
 
 
 @Controller('guardia')
 export class GuardiaController {
-  constructor(private readonly service: CitasService) {}
+  constructor(
+    private readonly service: CitasService,
+    private readonly guardiaService: GuardiaService
+  ) {}
 
-  @Post("autorizar")
+  @Post("generar-cita")
   create(@Body() dto: CreateCitaDto) {
     return this.service.create(dto);
+  }
+
+  @Post("autorizar")
+  autorice(@Body() dto: AutorizeCitaDto) {
+    return this.guardiaService.autorice(dto);
   }
 
   @Get("ver-agenda")

@@ -4,6 +4,9 @@ import { AreaModule } from '../area/area.module';
 import { GuardiaController } from './guardia.controller';
 import { Cita } from '../cita/cita.entity';
 import { CitasModule } from '../cita/citas.module';
+import { GuardiaService } from './guardia.service';
+import { SocketService } from '../sockets/socket.service';
+import { SocketsModule } from '../sockets/sockets.module';
 
 
 @Module({
@@ -11,8 +14,11 @@ import { CitasModule } from '../cita/citas.module';
     TypeOrmModule.forFeature([Cita]),
     AreaModule,
     CitasModule, // <- LOS MÓDULOS VAN EN IMPORTS
+    SocketsModule
+    
   ],
   controllers: [GuardiaController],
-  providers: [], // <- ACÁ VAN LOS SERVICES DEL MÓDULO
+  providers: [GuardiaService, SocketService], // <- ACÁ VAN LOS SERVICES DEL MÓDULO
+  
 })
 export class GuardiaModule {}

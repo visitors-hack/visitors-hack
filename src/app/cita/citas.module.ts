@@ -6,11 +6,13 @@ import { CitasService } from './dates.service';
 import { QrService } from 'src/app/qr/qr.service';
 import { AreaModule } from '../area/area.module';
 import { Estado } from '../estado/estado.entity';
+import { SocketsModule } from '../sockets/sockets.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Cita, Estado]), AreaModule],
+  imports: [TypeOrmModule.forFeature([Cita, Estado]),
+    AreaModule,SocketsModule],
   controllers: [CitasController],
   providers: [CitasService, QrService],
-   exports: [CitasService],
+  exports: [CitasService],
 })
-export class CitasModule {}
+export class CitasModule { }

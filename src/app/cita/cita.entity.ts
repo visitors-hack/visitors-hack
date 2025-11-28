@@ -48,4 +48,10 @@ export class Cita {
 
   @ManyToOne(() => Estado)
   estado: Estado;
+
+  @Column({ nullable: true })
+  motivo: string;
+  
+  @Column({ nullable: true })
+  empresa: string;
 }

@@ -28,8 +28,9 @@ export class CreateCitaDto {
   @IsString()
   areaId: string;
 
+  @IsOptional()
   @IsString()
-  estadoId: string;
+  estadoId?: string;
 
   @IsString()
   userId: string;
@@ -39,4 +40,10 @@ export class CreateCitaDto {
 
   @IsString()
   empresa: string;
+
+  @IsString()
+  nombre: string;
+
+  @IsString()
+  horaIngreso: string;
 }

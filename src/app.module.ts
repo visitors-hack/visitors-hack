@@ -15,6 +15,7 @@ import { QrController } from './app/qr/qr.controller';
 import { EmailModule } from './app/email/email.module';
 import { GuardiaModule } from './app/guardia/guardia.module';
 import { AutorizanteModule } from './app/autorizante/autorizante.module';
+import { SocketsModule } from './app/sockets/sockets.module';
 
 dotenv.config();
 
@@ -28,7 +29,8 @@ dotenv.config();
     EmailModule,
     AreaModule,
     GuardiaModule,
-    AutorizanteModule
+    AutorizanteModule,
+    SocketsModule,
   ],
   controllers: [QrController],
   providers: [QrService],

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Su Cita</title>
+  </head>
+  <body>
+    <h2>Su cita es la siguiente:</h2>
+    <p>Hola {{dni}},</p>
+    <p>Usted tiene una cita el día {{fecha}} a las {{horaCita}} en el Área {{area}}.</p>
+    <p>Link de la cita: <a href="{{redirect_invite}}">{{redirect_invite}}</a></p>
+    <p>Escanee este QR para más información:</p>
+    <img src="cid:{{qrCid}}" alt="QR de la cita" />
+  </body>
+</html>
